@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h4 class="text-center my-4">Directors(Number Of Rows : {{dc}})</h4>
+    <div class="row my-4">
+        <!-- <div class="col-md-4"></div> -->
+        <div class="col-md-12">
+            <table class="table bg-white table-responsive-sm">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Uid</th>
+                    <th scope="col">Department</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for d in directors %}
+                  <tr>
+                    <td>{{d.name}}</td>
+                    <td>{{d.gender}}</td>
+                    <td>{{d.uid}}</td>
+                    <td>{{d.department}}</td>
+                  </tr>
+                 {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

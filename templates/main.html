@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>IMDb</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% load static %}
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+        
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    
+        <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+            
+        <link rel="stylesheet" href="{% static 'css/bootstrap-datetimepicker.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/nouislider.css' %}">
+    
+        
+        <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+        <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        {% block css %}
+        {% endblock %}
+      </head>
+      <body>
+        <div class="main-section">
+            <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+                <div class="container">
+                  <a class="navbar-brand" href="{% url 'index' %}">FilterIMDb</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="oi oi-menu"></span> Menu
+                  </button>
+                  <div class="collapse navbar-collapse" id="ftco-nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a href="https://github.com/amanjha8100" target="_blank" class="nav-link icon d-flex align-items-center"><i class="ion-logo-github"></i><span class="d-lg-none ml-2">GitHub</span></a></li>
+                        <li class="nav-item"><a href="{% url 'index' %}" class="nav-link icon d-flex align-items-center"><i>Movies</i><span class="d-lg-none ml-2"></span></a></li>
+                        <!-- <li class="nav-item"><a href="#" class="nav-link icon d-flex align-items-center"><i>Movies</i><span class="d-lg-none ml-2"></span></a></li> -->
+                        <li class="nav-item"><a href="{% url 'filter' %}" class="nav-link icon d-flex align-items-center"><i>Filter</i><span class="d-lg-none ml-2"></span></a></li>
+                      <!-- <li class="nav-item"><a href="#" class="nav-link icon d-flex align-items-center"><i class="ion-logo-twitter"></i><span class="d-lg-none ml-2">Twitter</span></a></li> -->
+                      <!-- <li class="nav-item"><a href="#" class="nav-link icon d-flex align-items-center"><i class="ion-logo-instagram"></i><span class="d-lg-none ml-2">Instagram</span></a></li> -->
+                      <!-- <li class="nav-item cta"><a href="#" class="nav-link icon d-flex align-items-center"><i class="ion-ios-cloud-download mr-2"></i> Download</a></li> -->
+                    </ul>
+                  </div>
+                  </div>
+              </nav>
+              
+              {% block content %}
+              {% endblock %}
+                <footer class="ftco-section ftco-section-2 bg-light">
+                    <div class="col-md-12 text-center">
+                        <p class="mb-0">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>
+                            document.write(new Date().getFullYear());
+            
+                        </script> All rights reserved | Made with <i class="icon-heart" aria-hidden="true"></i> by <a href="#" target="_blank">Aman Prakash Jha</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </footer>
+        </div>
+
+
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+        <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'js/aos.js' %}"></script>
+
+        <script src="{% static 'js/nouislider.min.js' %}"></script>
+        <script src="{% static 'js/moment-with-locales.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+      </body>
+</html>
