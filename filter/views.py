@@ -44,7 +44,7 @@ def filter(request):
         qs2 = qs2.filter(release_date__gte=releasedfrom)
     if releasedto != '' and releasedto is not None:
         qs2 = qs2.filter(release_date__lt=releasedto)
-    if sort != '' and sort is not None:
+    if sort != '' and sort is not None and sort != 'Choose...':
         if sort == 'uid':
             qs2 = qs2.order_by(sort)
         elif sort == '-uid':
@@ -81,5 +81,17 @@ def filterD(request):
     }
     return render(request,'filter/filterD.html',context)
 
-# def dmovie(request, uid):
+def directormovies(request, id):
+    qs = []
+    try:
+        director = Directors.objects.get(id=id)
+    except Directors.DoesNotExist:
+        director = None
+    if director is not None:
+        qs = Movies.objects.filter(director_id=director.uid)
+    context = {
+        'qs':qs,
+        'mc':qs.count(),
+    }
+    return render(request,'filter/dmovie.html',context)
 
