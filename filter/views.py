@@ -29,6 +29,7 @@ def filter(request):
     budgetq = request.GET.get('budget')
     releasedfrom = request.GET.get('release_date_from')
     releasedto = request.GET.get('release_date_to')
+    sort = request.GET.get('sort')
     if mtitleq != '' and mtitleq is not None:
         qs2 = qs2.filter(original_title__startswith=mtitleq)
     if muidq != '' and muidq is not None:
@@ -43,6 +44,26 @@ def filter(request):
         qs2 = qs2.filter(release_date__gte=releasedfrom)
     if releasedto != '' and releasedto is not None:
         qs2 = qs2.filter(release_date__lt=releasedto)
+    if sort != '' and sort is not None:
+        if sort == 'uid':
+            qs2 = qs2.order_by(sort)
+        elif sort == '-uid':
+            qs2 = qs2.order_by(sort)
+        elif sort == 'original_title':
+            qs2 = qs2.order_by(sort)
+        elif sort == 'vote_average':
+            qs2 = qs2.order_by(sort)
+        elif sort == '-vote_average':
+            qs2 = qs2.order_by(sort)
+        elif sort == 'vote_count':
+            qs2 = qs2.order_by(sort)
+        elif sort == '-vote_count':
+            qs2 = qs2.order_by(sort)
+        elif sort == '-release_date':
+            qs2 = qs2.order_by(sort)
+        else:
+            qs2 = qs2.order_by(sort)
+        print(sort)
     context = {
         'qs2':qs2,
         'qc':qs2.count(),
