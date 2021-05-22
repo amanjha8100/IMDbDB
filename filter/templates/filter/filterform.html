@@ -12,18 +12,6 @@
         <div class="form-row">
             <div class="form-group col-12">
                 <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="name" placeholder="Director name" />
-                    <span class="input-group-append">
-                        <div class="input-group-text bg-transparent">
-                            <i class="fa fa-search"></i>
-                        </div>
-                    </span>
-                </div>
-            </div>        
-        </div>
-        <div class="form-row">
-            <div class="form-group col-12">
-                <div class="input-group">
                     <input class="form-control py-2 border-right-0 border" type="search" name="original_title" placeholder="Movie Title....." />
                     <span class="input-group-append">
                         <div class="input-group-text bg-transparent">
@@ -59,32 +47,38 @@
         </div>
         <div class="form-row">
           <div class="form-group col-md-2 col-lg-2">
-            <label for="viewCountMin">Minimum View Count</label>
-            <input type="number" min=0 class="form-control" id="viewCountMin" placeholder="0" name="view_count_min">
+            <label for="viewCountMin">Minimum Vote Count</label>
+            <input type="number" min=0 class="form-control" id="viewCountMin" placeholder="0" name="vote_count">
           </div>
           <div class="form-group col-md-2 col-lg-2">
-            <label for="viewCountMax">Maximum View Count</label>
-            <input type="number" min=0 class="form-control" id="viewCountMax" placeholder="10000?" name="view_count_max">
+            <label for="viewCountMax">Minimum Budget</label>
+            <input type="number" min=0 class="form-control" id="viewCountMax" placeholder="10000?" name="budget">
           </div>
           <div class="form-group col-md-2 col-lg-2">
-            <label for="publishDateMin">Publish date minimum</label>
-            <input type="date" class="form-control" id="publishDateMin" name="date_min">
+            <label for="publishDateMin">Release date From</label>
+            <input type="date" class="form-control" id="publishDateMin" name="release_date_from">
           </div>
           <div class="form-group col-md-2 col-lg-2">
-            <label for="publishDateMax">Publish date maximum</label>
-            <input type="date" class="form-control" id="publishDateMax" name="date_max">
+            <label for="publishDateMax">Release date to</label>
+            <input type="date" class="form-control" id="publishDateMax" name="release_date_to">
           </div>
           <div class="form-group col-md-4">
-            <label for="category">Category</label>
+            <label for="category">Sort by</label>
             <select id="category" class="form-control" name="category">
               <option selected>Choose...</option>
-              {% for cat in categories %}
-              <option value="{{ cat }}">{{ cat }}</option>
-              {% endfor %}
+              <option value="original_title">Title</option>
+              <option value="uid">ID(ascending)</option>
+              <option value="-uid">ID(descending)</option>
+              <option value="vote_average">Rating(ascending)</option>
+              <option value="-vote_average">Rating(descending)</option>
+              <option value="vote_count">Vote count(ascending)</option>
+              <option value="-vote_count">Vote Count(descending)</option>
+              <option value="-release_date">Released Recent</option>
+              <option value="release_date">Old to new movies</option>
             </select>
           </div>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="reviewed" name="reviewed">
             <label class="form-check-label" for="reviewed">
@@ -99,7 +93,7 @@
               Not reviewed
             </label>
           </div>
-        </div>
+        </div> -->
         <button type="submit" class="btn btn-primary">Search</button>
       </form>
 
@@ -125,7 +119,7 @@
         </ul>
       </div>
       <div class="container">
-        <h4 class="text-center my-4">Movies(Number Of Rows : {{qsr}})</h4>
+        <h4 class="text-center my-4">Movies(Number Of Rows : {{qc}})</h4>
         <div class="row my-4">
             <!-- <div class="col-md-4"></div> -->
             <div class="col-md-12">
@@ -143,7 +137,6 @@
                         <th scope="col">Overview</th>
                         <th scope="col">Tagline</th>
                         <th scope="col">Uid</th>
-                        <th scope="col">Director Id</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -162,7 +155,6 @@
                         <td>{{a.overview}}</td>
                         <td>{{a.tagline}}</td>
                         <td>{{a.uid}}</td>
-                        <td>{{a.director_id}}</td>
                       </tr>
                      {% endfor %}
                      

@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+
+{% block css %}
+{% load static %}
+{% endblock %}
+
+{% block content %}
+    <main role="main" class="container">
+
+      <h3>Filter Journals</h3>
+      <form method="GET" action=".">
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="name" placeholder="Director name"/>
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>        
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+
+      <hr />
+
+      <div class="row">
+        <ul>
+          {% for journal in queryset %}
+            <li>
+              {{ journal.title }}
+              <span>Author: {{ journal.author.name }}</span>
+              <span>
+                {% for cat in journal.categories.all %}
+                  {{ cat }}
+                {% endfor %}
+              </span>
+              <span>Publish date: {{ journal.publish_date }}</span>
+              <span>View count: {{ journal.views }}</span>
+              <span>Reviewed: {{ journal.reviewed }}</span>
+            </li>
+            <hr />
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="container">
+        <h4 class="text-center my-4">Movies(Number Of Rows : {{qc}})</h4>
+        <div class="row my-4">
+            <!-- <div class="col-md-4"></div> -->
+            <div class="col-md-12">
+                <table class="table bg-white table-responsive-sm table-responsive-md">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Director Id</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        
+                        {% for a in qs %}
+                        
+                      <tr>
+                        <td>{{a.name}}</td>
+                        {% if a.gender == 2 %}
+                        <td>Male</td>
+                        {% elif a.gender == 1 %}
+                        <td>Female</td>
+                        {% else %}
+                        <td>Other</td>
+                        {% endif %}
+                        <td>{{a.uid}}</td>
+                      </tr>
+                     {% endfor %}
+                     
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+    </main>
+
+{% endblock %}
+

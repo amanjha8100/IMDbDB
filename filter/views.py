@@ -2,13 +2,13 @@ from django.shortcuts import render
 from . models import Directors,Movies
 # Create your views here.
 def index(request):
-    movies = Movies.objects.all()
-    mcount = Movies.objects.all().count()
+    directors = Directors.objects.all();
+    dc = directors.count()
     context = {
-        'movies':movies,
-        'mc':mcount,
+        'directors':directors,
+        'dc':dc,
     }
-    return render(request,'filter/movies.html',context)
+    return render(request,'filter/index.html',context)
 
 def movie(request):
     movies = Movies.objects.all()
@@ -20,43 +20,45 @@ def movie(request):
     return render(request,'filter/movies.html',context)
 
 
-# def filter(request):
-    qs1 = Directors.objects.all()
+def filter(request):
     qs2 = Movies.objects.all()
-    qsn = list()
-    qdirector = list()
-    directorq = request.GET.get('name')
     mtitleq = request.GET.get('original_title')
     muidq = request.GET.get('uid')
     mratingq = request.GET.get('vote_average')
-    if directorq != '' and directorq is not None:
-        qs1 = qs1.filter(name__startswith=directorq)
-        x = qs1.values_list(directors__name)
-        print(qs1)
-        # qs2 = qs2.filter(director_id=)
-        qs1c = qs1.count()
-        for q in qs1:
-            mfilter = qs2.filter(director_id=q.uid)
-            mfilterc = mfilter.count()
-            for i in range(0,mfilterc):
-                qdirector.append(q.name)
-            qsn += mfilter
-            print(len(qsn))
-        print(qdirector)
-        print(len(qsn))
+    votecountq = request.GET.get('vote_count')
+    budgetq = request.GET.get('budget')
+    releasedfrom = request.GET.get('release_date_from')
+    releasedto = request.GET.get('release_date_to')
+    if mtitleq != '' and mtitleq is not None:
+        qs2 = qs2.filter(original_title__startswith=mtitleq)
+    if muidq != '' and muidq is not None:
+        qs2 = qs2.filter(uid=muidq)
+    if mratingq != '' and mratingq is not None:
+        qs2 = qs2.filter(vote_average__gte=mratingq)
+    if votecountq != '' and votecountq is not None:
+        qs2 = qs2.filter(vote_count__gte=votecountq)
+    if budgetq != '' and budgetq is not None:
+        qs2 = qs2.filter(budget__gte=budgetq)
+    if releasedfrom != '' and releasedfrom is not None:
+        qs2 = qs2.filter(release_date__gte=releasedfrom)
+    if releasedto != '' and releasedto is not None:
+        qs2 = qs2.filter(release_date__lt=releasedto)
     context = {
-        'qs1':qs1,
-        'qsn':qsn,
         'qs2':qs2,
-        'qdirector':qdirector,
-    }   
+        'qc':qs2.count(),
+    }
     return render(request,'filter/filterform.html', context)
 
-def filter(request):
-    context = {
-        
-    }   
-    return render(request,'filter/filterform.html', context)
+def filterD(request):
+    qs = Directors.objects.all()
+    query = request.GET.get('name')
+    if query != '' and query is not None:
+        qs = qs.filter(name__startswith=query)
+    context={
+        'qs':qs,
+        'qc':qs.count(),
+    }
+    return render(request,'filter/filterD.html',context)
 
-def util():
-    pass
+# def dmovie(request, uid):
+
