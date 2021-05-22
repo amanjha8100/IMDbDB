@@ -12,14 +12,21 @@
         <div class="form-row">
             <div class="form-group col-12">
                 <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="name" placeholder="Director name"/>
+                    <input class="form-control py-2 border-right-0 border" type="search" name="name" placeholder="Director name" value="{{na}}"/>
                     <span class="input-group-append">
                         <div class="input-group-text bg-transparent">
                             <i class="fa fa-search"></i>
                         </div>
                     </span>
                 </div>
-            </div>        
+            </div>  
+            <div class="form-group col-md-4">
+                <label for="category">Sort by</label>
+                <select id="category" class="form-control" name="sort">
+                  <option selected>Choose...</option>
+                  <option value="name">Name(lexicographically)</option>
+                </select>
+              </div>      
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
       </form>

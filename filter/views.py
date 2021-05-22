@@ -67,17 +67,29 @@ def filter(request):
     context = {
         'qs2':qs2,
         'qc':qs2.count(),
+        'title':mtitleq,
+        'muid':muidq,
+        'rating':mratingq,
+        'vcq':votecountq,
+        'budget':budgetq,
+        'rf':releasedfrom,
+        'rt':releasedto,
+        'so':sort,
     }
     return render(request,'filter/filterform.html', context)
 
 def filterD(request):
     qs = Directors.objects.all()
     query = request.GET.get('name')
+    sort = request.GET.get('sort')
     if query != '' and query is not None:
         qs = qs.filter(name__startswith=query)
+    if sort != '' and sort is not None and sort != 'Choose...':
+        qs = qs.order_by(sort)
     context={
         'qs':qs,
         'qc':qs.count(),
+        'na':query,
     }
     return render(request,'filter/filterD.html',context)
 

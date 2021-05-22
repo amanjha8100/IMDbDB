@@ -12,7 +12,7 @@
         <div class="form-row">
             <div class="form-group col-12">
                 <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="original_title" placeholder="Movie Title....." />
+                    <input class="form-control py-2 border-right-0 border" type="search" name="original_title" placeholder="Movie Title....." value="{{title}}"/>
                     <span class="input-group-append">
                         <div class="input-group-text bg-transparent">
                             <i class="fa fa-search"></i>
@@ -24,7 +24,7 @@
         <div class="form-row">
             <div class="form-group col-12">
                 <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="uid" placeholder="Movie ID" />
+                    <input class="form-control py-2 border-right-0 border" type="search" name="uid" placeholder="Movie ID" value="{{muid}}"/>
                     <span class="input-group-append">
                         <div class="input-group-text bg-transparent">
                             <i class="fa fa-search"></i>
@@ -36,7 +36,7 @@
         <div class="form-row">
             <div class="form-group col-12">
                 <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="vote_average" placeholder="Rating >...." />
+                    <input class="form-control py-2 border-right-0 border" type="search" name="vote_average" placeholder="Rating >...." value="{{rating}}" />
                     <span class="input-group-append">
                         <div class="input-group-text bg-transparent">
                             <i class="fa fa-search"></i>
@@ -48,19 +48,19 @@
         <div class="form-row">
           <div class="form-group col-md-2 col-lg-2">
             <label for="viewCountMin">Minimum Vote Count</label>
-            <input type="number" min=0 class="form-control" id="viewCountMin" placeholder="0" name="vote_count">
+            <input type="number" min=0 class="form-control" id="viewCountMin" placeholder="0" name="vote_count" value="{{vcq}}">
           </div>
           <div class="form-group col-md-2 col-lg-2">
             <label for="viewCountMax">Minimum Budget</label>
-            <input type="number" min=0 class="form-control" id="viewCountMax" placeholder="10000?" name="budget">
+            <input type="number" min=0 class="form-control" id="viewCountMax" placeholder="10000?" name="budget" value="{{budget}}">
           </div>
           <div class="form-group col-md-2 col-lg-2">
             <label for="publishDateMin">Release date From</label>
-            <input type="date" class="form-control" id="publishDateMin" name="release_date_from">
+            <input type="date" class="form-control" id="publishDateMin" name="release_date_from" value="{{rf}}">
           </div>
           <div class="form-group col-md-2 col-lg-2">
             <label for="publishDateMax">Release date to</label>
-            <input type="date" class="form-control" id="publishDateMax" name="release_date_to">
+            <input type="date" class="form-control" id="publishDateMax" name="release_date_to" value="{{rt}}">
           </div>
           <div class="form-group col-md-4">
             <label for="category">Sort by</label>
