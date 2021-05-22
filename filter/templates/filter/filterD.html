@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block content %}
-    <main role="main" class="container">
+    <main role="main" class="container my-4">
 
       <h3>Filter Journals</h3>
       <form method="GET" action=".">
         <div class="form-row">
             <div class="form-group col-12">
                 <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="name" placeholder="Director name" value="{{na}}"/>
+                    <input class="form-control py-2 border-right-0 border" type="search" name="name" placeholder="Director name" {% if na is not None %}value="{{na}}"{% endif %}/>
                     <span class="input-group-append">
                         <div class="input-group-text bg-transparent">
                             <i class="fa fa-search"></i>
@@ -23,8 +23,8 @@
             <div class="form-group col-md-4">
                 <label for="category">Sort by</label>
                 <select id="category" class="form-control" name="sort">
-                  <option selected>Choose...</option>
-                  <option value="name">Name(lexicographically)</option>
+                  <option {% if so == 'Choose...' %}selected{% endif %}>Choose...</option>
+                  <option value="name" {% if so == 'name' %}selected{% endif %}>Name(lexicographically)</option>
                 </select>
               </div>      
         </div>

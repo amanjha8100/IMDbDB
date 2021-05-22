@@ -12,7 +12,7 @@
         <div class="form-row">
             <div class="form-group col-12">
                 <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="original_title" placeholder="Movie Title....." value="{{title}}"/>
+                    <input class="form-control py-2 border-right-0 border" type="search" name="original_title" placeholder="Movie Title....." {% if title is not None %}value="{{title}}"{% endif %}/>
                     <span class="input-group-append">
                         <div class="input-group-text bg-transparent">
                             <i class="fa fa-search"></i>
@@ -24,7 +24,7 @@
         <div class="form-row">
             <div class="form-group col-12">
                 <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="uid" placeholder="Movie ID" value="{{muid}}"/>
+                    <input class="form-control py-2 border-right-0 border" type="search" name="uid" placeholder="Movie ID" {% if muid is not None %}value="{{muid}}"{% endif %}/>
                     <span class="input-group-append">
                         <div class="input-group-text bg-transparent">
                             <i class="fa fa-search"></i>
@@ -36,7 +36,7 @@
         <div class="form-row">
             <div class="form-group col-12">
                 <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="vote_average" placeholder="Rating >...." value="{{rating}}" />
+                    <input class="form-control py-2 border-right-0 border" type="search" name="vote_average" placeholder="Rating >...." {% if rating is not None %}value="{{rating}}"{% endif %} />
                     <span class="input-group-append">
                         <div class="input-group-text bg-transparent">
                             <i class="fa fa-search"></i>
@@ -48,33 +48,33 @@
         <div class="form-row">
           <div class="form-group col-md-2 col-lg-2">
             <label for="viewCountMin">Minimum Vote Count</label>
-            <input type="number" min=0 class="form-control" id="viewCountMin" placeholder="0" name="vote_count" value="{{vcq}}">
+            <input type="number" min=0 class="form-control" id="viewCountMin" placeholder="0" name="vote_count" {% if vcq is not None %}value="{{vcq}}"{% endif %}>
           </div>
           <div class="form-group col-md-2 col-lg-2">
             <label for="viewCountMax">Minimum Budget</label>
-            <input type="number" min=0 class="form-control" id="viewCountMax" placeholder="10000?" name="budget" value="{{budget}}">
+            <input type="number" min=0 class="form-control" id="viewCountMax" placeholder="10000?" name="budget" {% if budget is not None %}value="{{budget}}"{% endif %}>
           </div>
           <div class="form-group col-md-2 col-lg-2">
             <label for="publishDateMin">Release date From</label>
-            <input type="date" class="form-control" id="publishDateMin" name="release_date_from" value="{{rf}}">
+            <input type="date" class="form-control" id="publishDateMin" name="release_date_from" {% if rf is not None %}value="{{rf}}"{% endif %}>
           </div>
           <div class="form-group col-md-2 col-lg-2">
             <label for="publishDateMax">Release date to</label>
-            <input type="date" class="form-control" id="publishDateMax" name="release_date_to" value="{{rt}}">
+            <input type="date" class="form-control" id="publishDateMax" name="release_date_to" {% if rt is not None %}value="{{rt}}"{% endif %}>
           </div>
           <div class="form-group col-md-4">
             <label for="category">Sort by</label>
             <select id="category" class="form-control" name="sort">
-              <option selected>Choose...</option>
-              <option value="original_title">Title</option>
-              <option value="uid">ID(ascending)</option>
-              <option value="-uid">ID(descending)</option>
-              <option value="vote_average">Rating(ascending)</option>
-              <option value="-vote_average">Rating(descending)</option>
-              <option value="vote_count">Vote count(ascending)</option>
-              <option value="-vote_count">Vote Count(descending)</option>
-              <option value="-release_date">Released Recent</option>
-              <option value="release_date">Old to new movies</option>
+              <option {% if so == 'Choose...' %}selected{% endif %}>Choose...</option>
+              <option value="original_title" {% if so == 'original_title' %}selected{% endif %}>Title</option>
+              <option value="uid" {% if so == 'uid' %}selected{% endif %}>ID(ascending)</option>
+              <option value="-uid" {% if so == '-uid' %}selected{% endif %}>ID(descending)</option>
+              <option value="vote_average" {% if so == 'vote_average' %}selected{% endif %}>Rating(ascending)</option>
+              <option value="-vote_average" {% if so == '-vote_average' %}selected{% endif %}>Rating(descending)</option>
+              <option value="vote_count" {% if so == 'vote_count' %}selected{% endif %}>Vote count(ascending)</option>
+              <option value="-vote_count" {% if so == '-vote_count' %}selected{% endif %}>Vote Count(descending)</option>
+              <option value="-release_date" {% if so == '-release_date' %}selected{% endif %}>Released Recent</option>
+              <option value="release_date" {% if so == 'release_date' %}selected{% endif %}>Old to new movies</option>
             </select>
           </div>
         </div>

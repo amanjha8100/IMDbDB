@@ -90,6 +90,7 @@ def filterD(request):
         'qs':qs,
         'qc':qs.count(),
         'na':query,
+        'so':sort,
     }
     return render(request,'filter/filterD.html',context)
 
